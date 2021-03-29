@@ -36,7 +36,7 @@ def modify(answer_id):
             form.populate_obj(answer)
             answer.modify_date=datetime.now()
             db.session.commit()
-            return redirect('{}#answer_{}'.format(url_for('question.detail', question_id=question_id), answer.id))
+            return redirect('{}#answer_{}'.format(url_for('question.detail', question_id=answer.question.id), answer.id))
     else:
         form=AnswerForm(obj=answer)
     return render_template('answer/answer_form.html', answer=answer, form=form)
